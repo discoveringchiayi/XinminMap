@@ -34,26 +34,33 @@
         }
 
         /* ==========================================
-           📍 終極巨大化標註點 (改為 a 標籤專用樣式)
+           📍 終極巨大化標註點 (更新：字體放大 + 防遮擋機制)
            ========================================== */
         .hotspot {
             position: absolute;
             transform: translate(-50%, -50%);
-            width: 150px;   
-            height: 150px;  
+            width: 250px;   /* 🌟 從 150px 加大到 250px */
+            height: 250px;  /* 🌟 從 150px 加大到 250px */
             background-color: white;
-            border: 15px solid var(--theme-color, #00e5ff); 
+            border: 20px solid var(--theme-color, #00e5ff); /* 邊框跟著加粗 */
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.6);
             z-index: 10;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #333333;
-            font-size: 80px; 
+            font-size: 120px; /* 🌟 數字字體從 80px 暴力放大到 120px */
             font-weight: 900;
-            text-decoration: none; /* 移除超連結底線 */
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        /* 🌟 核心修復：滑鼠摸到時，瞬間跳到最前面 (z-index: 1000)，並微微放大 */
+        .hotspot:hover {
+            z-index: 1000; 
+            transform: translate(-50%, -50%) scale(1.1);
         }
 
         .hotspot::after {
@@ -78,20 +85,20 @@
         .hotspot::before {
             content: attr(data-name);
             position: absolute;
-            bottom: 180px; 
+            bottom: 280px; /* 🌟 配合變大的點，將字卡再往上推，避免擋到自己 */
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(40, 40, 40, 0.95);
             color: #ffffff;
-            padding: 20px 40px;
-            border-radius: 20px;
-            font-size: 60px; 
+            padding: 30px 60px; /* 字卡內距變寬 */
+            border-radius: 30px; /* 字卡變圓潤 */
+            font-size: 80px; /* 🌟 字卡文字從 60px 放大到 80px */
             font-weight: bold;
             white-space: nowrap;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s ease;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.5);
         }
 
         .hotspot:hover::before {
@@ -217,7 +224,6 @@
         const coordPanel = document.getElementById('coord-panel');
 
         locations.forEach(loc => {
-            // 建立列表圖例 (改用原生 a 標籤)
             if (loc.num) {
                 const li = document.createElement('li');
                 const isLinkValid = loc.link && loc.link !== "#";
@@ -229,7 +235,6 @@
                 legendList.appendChild(li);
             }
 
-            // 建立地圖標註點 (改用原生 a 標籤，免除瀏覽器攔截彈窗問題)
             const dot = document.createElement('a');
             dot.className = 'hotspot';
             dot.style.left = loc.x + '%';
@@ -243,12 +248,11 @@
 
             if (loc.link && loc.link !== "#") {
                 dot.href = loc.link;
-                dot.target = "_blank"; // 另開新分頁
+                dot.target = "_blank"; 
             } else {
                 dot.href = "javascript:void(0);";
             }
 
-            // 阻止冒泡，避免點擊點點時誤觸地圖座標測量功能
             dot.addEventListener('click', (e) => {
                 e.stopPropagation();
             });
