@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -29,78 +29,86 @@
             cursor: grab;
         }
 
-            #map-image:active {
-                cursor: grabbing;
-            }
+        #map-image:active {
+            cursor: grabbing;
+        }
 
+        /* ==========================================
+           📍 標註點樣式 (圓圈微調放大)
+           ========================================== */
         .hotspot {
             position: absolute;
             transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
+            width: 160px;   /* 🌟 從 130px 微調放大到 160px */
+            height: 160px;  /* 🌟 從 130px 微調放大到 160px */
             background-color: white;
-            border: 8px solid var(--theme-color, #00e5ff);
+            border: 12px solid var(--theme-color, #00e5ff); /* 邊框微調配合圓圈 */
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.6);
             z-index: 10;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #333333;
-            font-size: 40px;
+            font-size: 100px; /* 🌟 裡面的數字稍微放大到 100px */
             font-weight: 900;
+            text-decoration: none;
+            transition: transform 0.2s ease;
         }
 
-            .hotspot::after {
-                content: '';
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background-color: var(--theme-color, #00e5ff);
-                border-radius: 50%;
-                opacity: 0.5;
-                z-index: -1;
-                animation: pulse 2s infinite ease-in-out;
-            }
+        /* 防遮擋機制 */
+        .hotspot:hover {
+            z-index: 1000; 
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+
+        .hotspot::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-color: var(--theme-color, #00e5ff);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: -1;
+            animation: pulse 2s infinite ease-in-out;
+        }
 
         @keyframes pulse {
-            0% {
-                transform: scale(0.8);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: scale(1.8);
-                opacity: 0;
-            }
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(1.8); opacity: 0; }
         }
 
+        /* ==========================================
+           🌟 標註點 hover 跳出來的文字卡片 (字體明顯放大)
+           ========================================== */
         .hotspot::before {
             content: attr(data-name);
             position: absolute;
-            bottom: 125px;
+            bottom: 180px; /* 🌟 配合變大的圓圈與字體，將字卡往上推 */
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(40, 40, 40, 0.95);
             color: #ffffff;
-            padding: 16px 32px;
-            border-radius: 16px;
-            font-size: 56px;
+            padding: 25px 50px; /* 🌟 加大內距，讓變大的字體不會貼住邊緣 */
+            border-radius: 30px; /* 字卡邊角更圓潤 */
+            font-size: 90px; /* 🌟 字卡文字從 60px 大幅放大到 90px */
             font-weight: bold;
             white-space: nowrap;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s ease;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.5);
         }
 
         .hotspot:hover::before {
             opacity: 1;
         }
 
+        /* 座標面板與圖例面板保持不變 */
         #coord-panel {
             position: fixed;
             bottom: 20px;
@@ -132,50 +140,57 @@
             overflow-y: auto;
         }
 
-            #legend-panel h3 {
-                margin: 0 0 15px 0;
-                font-size: 24px;
-                border-bottom: 2px solid #00e5ff;
-                padding-bottom: 10px;
-                text-align: center;
-                letter-spacing: 2px;
-            }
+        #legend-panel h3 {
+            margin: 0 0 15px 0;
+            font-size: 24px;
+            border-bottom: 2px solid #00e5ff;
+            padding-bottom: 10px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
 
-            #legend-panel ul {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
+        #legend-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-            #legend-panel li {
-                font-size: 18px;
-                margin-bottom: 12px;
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-                transition: color 0.2s ease, transform 0.1s ease;
-            }
+        #legend-panel li {
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
 
-                #legend-panel li:hover {
-                    color: #00e5ff;
-                    transform: translateX(5px);
-                }
+        #legend-panel li a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.1s ease;
+            width: 100%;
+        }
 
-            #legend-panel .leg-num {
-                display: inline-block;
-                background-color: #00e5ff;
-                color: #333;
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                text-align: center;
-                line-height: 30px;
-                font-weight: bold;
-                margin-right: 12px;
-                font-size: 16px;
-                flex-shrink: 0;
-                transition: none;
-            }
+        #legend-panel li a:hover {
+            color: #00e5ff;
+            transform: translateX(5px);
+        }
+
+        #legend-panel .leg-num {
+            display: inline-block;
+            background-color: #00e5ff;
+            color: #333;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 16px;
+            flex-shrink: 0;
+            transition: none;
+        }
     </style>
 </head>
 <body>
@@ -194,13 +209,9 @@
     </div>
 
     <script>
-        // ==========================================
-        // 🌟 你的標註點區塊 (大門口跟管院A棟已恢復)
-        // ==========================================
         const locations = [
-            // 💡 記得去 A+B 的 data.js 找 ID，並用 # 取代 ?p=
             { num: "1", id: 101, name: "大門口", x: 49.5, y: 73.7, color: "#00e5ff", link: "./A+B/index.html" },
-            { num: "2", id: 102, name: "管理學院A棟", x: 48.9, y: 57.2, color: "#00e5ff", link: "./A+B/index.html#B-18" },
+            { num: "2", id: 102, name: "管理學院A棟", x: 48.9, y: 57.2, color: "#00e5ff", link: "./A+B/index.html#22-b-18" }, 
             { num: "3", id: 103, name: "新民預留點-3", x: 45.0, y: 55.0, color: "#00e5ff", link: "#" },
             { num: "4", id: 104, name: "新民預留點-4", x: 55.0, y: 65.0, color: "#00e5ff", link: "#" },
             { num: "5", id: 105, name: "新民預留點-5", x: 65.0, y: 35.0, color: "#00e5ff", link: "#" },
@@ -219,15 +230,16 @@
         locations.forEach(loc => {
             if (loc.num) {
                 const li = document.createElement('li');
-                li.innerHTML = `<span class="leg-num" style="background-color: ${loc.color};">${loc.num}</span> <span class="leg-text">${loc.name}</span>`;
-                li.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (loc.link && loc.link !== "#") window.open(loc.link, '_blank');
-                });
+                const isLinkValid = loc.link && loc.link !== "#";
+                li.innerHTML = `
+                    <a href="${isLinkValid ? loc.link : 'javascript:void(0);'}" target="${isLinkValid ? '_blank' : '_self'}">
+                        <span class="leg-num" style="background-color: ${loc.color};">${loc.num}</span>
+                        <span class="leg-text">${loc.name}</span>
+                    </a>`;
                 legendList.appendChild(li);
             }
 
-            const dot = document.createElement('div');
+            const dot = document.createElement('a');
             dot.className = 'hotspot';
             dot.style.left = loc.x + '%';
             dot.style.top = loc.y + '%';
@@ -238,10 +250,17 @@
                 dot.textContent = loc.num;
             }
 
+            if (loc.link && loc.link !== "#") {
+                dot.href = loc.link;
+                dot.target = "_blank"; 
+            } else {
+                dot.href = "javascript:void(0);";
+            }
+
             dot.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (loc.link && loc.link !== "#") window.open(loc.link, '_blank');
             });
+
             container.appendChild(dot);
         });
 
@@ -263,7 +282,7 @@
             const ratioX = window.innerWidth / mapImage.naturalWidth;
             const ratioY = window.innerHeight / mapImage.naturalHeight;
 
-            baseScale = Math.min(ratioX, ratioY) * 0.9;
+            baseScale = Math.min(ratioX, ratioY) * 0.9; 
             currentScale = baseScale;
 
             translateX = (window.innerWidth - (mapImage.naturalWidth * currentScale)) / 2;
