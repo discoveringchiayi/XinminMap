@@ -34,15 +34,15 @@
         }
 
         /* ==========================================
-           📍 終極巨大化標註點
+           📍 終極巨大化標註點 (改為 a 標籤專用樣式)
            ========================================== */
         .hotspot {
             position: absolute;
             transform: translate(-50%, -50%);
-            width: 150px;   /* 暴力放大到 150px */
-            height: 150px;  /* 暴力放大到 150px */
+            width: 150px;   
+            height: 150px;  
             background-color: white;
-            border: 15px solid var(--theme-color, #00e5ff); /* 邊框加粗 */
+            border: 15px solid var(--theme-color, #00e5ff); 
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 8px 16px rgba(0,0,0,0.6);
@@ -51,8 +51,9 @@
             justify-content: center;
             align-items: center;
             color: #333333;
-            font-size: 80px; /* 數字字體變超級大 */
+            font-size: 80px; 
             font-weight: 900;
+            text-decoration: none; /* 移除超連結底線 */
         }
 
         .hotspot::after {
@@ -74,18 +75,17 @@
             100% { transform: scale(1.8); opacity: 0; }
         }
 
-        /* 標註點 hover 跳出來的文字也跟著巨大化 */
         .hotspot::before {
             content: attr(data-name);
             position: absolute;
-            bottom: 180px; /* 配合變大的圓圈，字卡再往上移 */
+            bottom: 180px; 
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(40, 40, 40, 0.95);
             color: #ffffff;
             padding: 20px 40px;
             border-radius: 20px;
-            font-size: 60px; /* 字卡文字變大 */
+            font-size: 60px; 
             font-weight: bold;
             white-space: nowrap;
             opacity: 0;
@@ -149,11 +149,18 @@
             margin-bottom: 12px;
             display: flex;
             align-items: center;
-            cursor: pointer;
-            transition: color 0.2s ease, transform 0.1s ease;
         }
 
-        #legend-panel li:hover {
+        #legend-panel li a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.1s ease;
+            width: 100%;
+        }
+
+        #legend-panel li a:hover {
             color: #00e5ff;
             transform: translateX(5px);
         }
@@ -191,12 +198,8 @@
     </div>
 
     <script>
-        // ==========================================
-        // 🌟 你的標註點區塊
-        // ==========================================
         const locations = [
             { num: "1", id: 101, name: "大門口", x: 49.5, y: 73.7, color: "#00e5ff", link: "./A+B/index.html" },
-            // 💡 記得一定要去 A+B 路線的 data.js 裡面，把管院A棟真實的 ID 替換掉下方的中文！
             { num: "2", id: 102, name: "管理學院A棟", x: 48.9, y: 57.2, color: "#00e5ff", link: "./A+B/index.html#22-b-18" }, 
             { num: "3", id: 103, name: "新民預留點-3", x: 45.0, y: 55.0, color: "#00e5ff", link: "#" },
             { num: "4", id: 104, name: "新民預留點-4", x: 55.0, y: 65.0, color: "#00e5ff", link: "#" },
@@ -214,17 +217,20 @@
         const coordPanel = document.getElementById('coord-panel');
 
         locations.forEach(loc => {
+            // 建立列表圖例 (改用原生 a 標籤)
             if (loc.num) {
                 const li = document.createElement('li');
-                li.innerHTML = `<span class="leg-num" style="background-color: ${loc.color};">${loc.num}</span> <span class="leg-text">${loc.name}</span>`;
-                li.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (loc.link && loc.link !== "#") window.open(loc.link, '_blank');
-                });
+                const isLinkValid = loc.link && loc.link !== "#";
+                li.innerHTML = `
+                    <a href="${isLinkValid ? loc.link : 'javascript:void(0);'}" target="${isLinkValid ? '_blank' : '_self'}">
+                        <span class="leg-num" style="background-color: ${loc.color};">${loc.num}</span>
+                        <span class="leg-text">${loc.name}</span>
+                    </a>`;
                 legendList.appendChild(li);
             }
 
-            const dot = document.createElement('div');
+            // 建立地圖標註點 (改用原生 a 標籤，免除瀏覽器攔截彈窗問題)
+            const dot = document.createElement('a');
             dot.className = 'hotspot';
             dot.style.left = loc.x + '%';
             dot.style.top = loc.y + '%';
@@ -235,10 +241,18 @@
                 dot.textContent = loc.num;
             }
 
+            if (loc.link && loc.link !== "#") {
+                dot.href = loc.link;
+                dot.target = "_blank"; // 另開新分頁
+            } else {
+                dot.href = "javascript:void(0);";
+            }
+
+            // 阻止冒泡，避免點擊點點時誤觸地圖座標測量功能
             dot.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (loc.link && loc.link !== "#") window.open(loc.link, '_blank');
             });
+
             container.appendChild(dot);
         });
 
