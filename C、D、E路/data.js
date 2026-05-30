@@ -830,7 +830,14 @@ var APP_DATA = {
           "target": "29-d-12"
         }
       ],
-      "infoHotspots": []
+      "infoHotspots": [
+        {
+          "yaw": 6.03069914, 
+          "pitch": 0.1518974465018239,
+          "title": "<a href=\"../A+B/index.html#26-b-25\" style=\"text-decoration: underline; font-size: 24px;\">前往B-25</a>",
+          "text": ""
+        }
+      ]
     },
     {
       "id": "18-d-2",
@@ -1107,7 +1114,14 @@ var APP_DATA = {
           "target": "24-d-82"
         }
       ],
-      "infoHotspots": []
+      "infoHotspots": [
+        {
+          "yaw": 1.45678391, 
+          "pitch": 0.09925366293106208,
+          "title": "<a href=\"../A+B/index.html#25-b-21\" style=\"text-decoration: underline; font-size: 24px;\">前往B-21</a>",
+          "text": ""
+        }
+      ]
     },
     {
       "id": "24-d-82",
