@@ -36,7 +36,14 @@ var APP_DATA = {
           "target": "1-c-2"
         }
       ],
-      "infoHotspots": []
+      "infoHotspots": [
+        {
+          "yaw": 3.27005896, 
+          "pitch": 0.1516632353078453,
+          "title": "<a href=\"../A+B/index.html\" style=\"text-decoration: underline; font-size: 24px;\">前往A-1</a>",
+          "text": ""
+        }
+      ]
     },
     {
       "id": "1-c-2",
