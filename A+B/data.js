@@ -48,14 +48,7 @@ var APP_DATA = {
           "target": "5-b-1"
         }
       ],
-      "infoHotspots": [
-        {
-          "yaw": 1.45, 
-          "pitch": 0.05, 
-          "title": "<a href=\"../C、D、E路/index.html\" style=\"text-decoration: underline; font-size: 24px;\">前往C-1</a>",
-          "text": ""
-        }
-      ]
+      "infoHotspots": []
     },
     {
       "id": "1-2",
@@ -994,7 +987,8 @@ var APP_DATA = {
           "pitch": 0.15316448297780383,
           "rotation": 0,
           "target": "23-d-7b-21",
-          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/C、D、E路/index.html#23-d-7b-21", 
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/C、D、E路/index.html#23-d-7b-21",
+          "title": "前往 D-7"
         },
         {
           "yaw": 1.5945701412497684,
@@ -1273,12 +1267,6 @@ var APP_DATA = {
           "pitch": -0.05983316679325945,
           "title": "明德樓",
           "text": "學生宿舍"
-        },
-        {
-          "yaw": 4.84943467, 
-          "pitch": 0.05, 
-          "title": "<a href=\"../C、D、E路/index.html#17-d-1b-25\" style=\"text-decoration: underline; font-size: 24px;\">前往D-1</a>",
-          "text": ""
         }
       ]
     }
