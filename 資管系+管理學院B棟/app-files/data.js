@@ -34,6 +34,14 @@ var APP_DATA = {
           "pitch": 0.09630191286930412,
           "rotation": 0,
           "target": "1-1f-2"
+        },
+        {
+          "yaw": 0.12846631051387547,
+          "pitch": 0.1516632353078453,
+          "rotation": 0,
+          "target": "9-b-4",
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/A+B/index.html#9-b-4",
+          "title": "前往 B-4"
         }
       ],
       "infoHotspots": [
@@ -267,6 +275,22 @@ var APP_DATA = {
           "pitch": 0.12547335144584792,
           "rotation": 0,
           "target": "4-1f-5"
+        },
+        {
+          "yaw": 1.6541644377624563,
+          "pitch": 0.21075634771974805,
+          "rotation": 0,
+          "target": "16-b-11",
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/A+B/index.html#16-b-11",
+          "title": "前往 B-11"
+        },
+        {
+          "yaw": 3.141592653589793,
+          "pitch": 0.21075634771974805,
+          "rotation": 0,
+          "target": "14-b-9",
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/A+B/index.html#14-b-9",
+          "title": "前往 B-9"
         }
       ],
       "infoHotspots": []
@@ -343,6 +367,14 @@ var APP_DATA = {
           "pitch": 0.10640611721168014,
           "rotation": 0,
           "target": "8-"
+        },
+        {
+          "yaw": 0.5191961213921914,
+          "pitch": 0.10640611721168014,
+          "rotation": 0,
+          "target": "22-b-18",
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/A+B/index.html#22-b-18",
+          "title": "前往 B-18"
         }
       ],
       "infoHotspots": []

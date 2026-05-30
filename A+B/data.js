@@ -468,6 +468,14 @@ var APP_DATA = {
           "pitch": 0.21045450630644247,
           "rotation": 0,
           "target": "10-b-5"
+        },
+        {
+          "yaw": -3.1340343399329225,
+          "pitch": 0.09789322161443081,
+          "rotation": 0,
+          "target": "0-1f-1b-4",
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/資管系+管理學院B棟/app-files/index.html#0-1f-1b-4",
+          "title": "前往 1F-1"
         }
       ],
       "infoHotspots": [
@@ -709,6 +717,14 @@ var APP_DATA = {
           "pitch": 0.2863631033742777,
           "rotation": 0,
           "target": "15-b-10"
+        },
+        {
+          "yaw": -0.39732031995158934,
+          "pitch": 0.09789322161443081,
+          "rotation": 0,
+          "target": "5-1f-6b-11b-9",
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/資管系+管理學院B棟/app-files/index.html#5-1f-6b-11b-9",
+          "title": "前往 1F-6"
         }
       ],
       "infoHotspots": [
@@ -810,6 +826,14 @@ var APP_DATA = {
           "pitch": 0.2790956660619539,
           "rotation": 0,
           "target": "15-b-10"
+        },
+        {
+          "yaw": 3.068136531677083,
+          "pitch": 0.09789322161443081,
+          "rotation": 0,
+          "target": "5-1f-6b-11b-9",
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/資管系+管理學院B棟/app-files/index.html#5-1f-6b-11b-9",
+          "title": "前往 1F-6"
         }
       ],
       "infoHotspots": [
@@ -1095,6 +1119,14 @@ var APP_DATA = {
           "pitch": 0.20459724798376833,
           "rotation": 0,
           "target": "23-b-19"
+        },
+        {
+          "yaw": 3.0182999844713514,
+          "pitch": 0.09789322161443081,
+          "rotation": 0,
+          "target": "7-ab-18",
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/資管系+管理學院B棟/app-files/index.html#7-ab-18",
+          "title": "前往 A棟穿堂"
         }
       ],
       "infoHotspots": [

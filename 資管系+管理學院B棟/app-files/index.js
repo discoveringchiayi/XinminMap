@@ -264,8 +264,16 @@
     }
 
     // Add click event handler.
-    wrapper.addEventListener('click', function() {
-      switchScene(findSceneById(hotspot.target));
+    wrapper.addEventListener('click', function(event) {
+      event.stopPropagation();
+      if (hotspot.urlTarget) {
+        window.location.href = hotspot.urlTarget;
+        return;
+      }
+      var targetScene = findSceneById(hotspot.target);
+      if (targetScene) {
+        switchScene(targetScene);
+      }
     });
 
     // Prevent touch and scroll events from reaching the parent element.
@@ -276,7 +284,12 @@
     var tooltip = document.createElement('div');
     tooltip.classList.add('hotspot-tooltip');
     tooltip.classList.add('link-hotspot-tooltip');
-    tooltip.innerHTML = findSceneDataById(hotspot.target).name;
+    var targetData = findSceneDataById(hotspot.target);
+    if (hotspot.urlTarget) {
+      tooltip.innerHTML = hotspot.title || '前往連結';
+    } else {
+      tooltip.innerHTML = (targetData && targetData.name) ? targetData.name : '前往下一個區域';
+    }
 
     wrapper.appendChild(icon);
     wrapper.appendChild(tooltip);
@@ -386,7 +399,17 @@
     return null;
   }
 
-  // Display the initial scene.
-  switchScene(scenes[0]);
+  // Display the initial scene (support URL hash deep-linking).
+  var targetId = window.location.hash.replace('#', '');
+  var initialScene = scenes[0];
+  if (targetId) {
+    for (var i = 0; i < scenes.length; i++) {
+      if (scenes[i].data.id === targetId) {
+        initialScene = scenes[i];
+        break;
+      }
+    }
+  }
+  switchScene(initialScene);
 
 })();
