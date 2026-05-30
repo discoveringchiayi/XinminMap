@@ -50,9 +50,9 @@ var APP_DATA = {
       ],
       "infoHotspots": [
         {
-          "yaw": 1.99622710, 
+          "yaw": 1.69622710, 
           "pitch": 0.05, 
-          "title": "<a href=\"./C、D、E路/index.html#0-c-1a-1\" style=\"text-decoration: underline; font-size: 24px;\">前往C-1</a>",
+          "title": "<a href=\"../C、D、E路/index.html\" style=\"text-decoration: underline; font-size: 24px;\">前往C-1</a>",
           "text": ""
         }
       ]
