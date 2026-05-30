@@ -386,7 +386,31 @@
     return null;
   }
 
-  // Display the initial scene.
-  switchScene(scenes[0]);
+ // --- 修改開始：賦予讀取網址的超能力 ---
+// 1. 先抓取網址參數
+var urlParams = new URLSearchParams(window.location.search);
+var pIndex = urlParams.get('p'); // 支援民雄的 ?p= 寫法
+var hashId = window.location.hash.substring(1); // 支援蘭潭的 # 寫法
+
+// 2. 判斷要降落在哪裡
+if (pIndex !== null && !isNaN(pIndex) && scenes[pIndex]) {
+    // 如果網址有 ?p=22，就跳到第 22 張圖 (從0開始算)
+    switchScene(scenes[pIndex]);
+} else if (hashId) {
+    // 如果網址有 #22-b-18，就去找出那個 ID 的房間
+    var targetScene = scenes.filter(function(s) {
+        return s.data.id === hashId;
+    })[0];
+    
+    if (targetScene) {
+        switchScene(targetScene);
+    } else {
+        switchScene(scenes[0]); // 找不到就回第一張
+    }
+} else {
+    // 網址很乾淨，預設回到第一張
+    switchScene(scenes[0]);
+}
+// --- 修改結束 ---
 
 })();
