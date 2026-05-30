@@ -833,7 +833,7 @@ var APP_DATA = {
       "infoHotspots": [
         {
           "yaw": 6.03069914, 
-          "pitch": 0.1518974465018239,
+          "pitch": 0.03,
           "title": "<a href=\"../A+B/index.html#26-b-25\" style=\"text-decoration: underline; font-size: 24px;\">前往B-25</a>",
           "text": ""
         }
