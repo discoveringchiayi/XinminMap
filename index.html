@@ -39,10 +39,10 @@
         .hotspot {
             position: absolute;
             transform: translate(-50%, -50%);
-            width: 160px;   /* 🌟 從 130px 微調放大到 160px */
-            height: 160px;  /* 🌟 從 130px 微調放大到 160px */
+            width: 160px;   
+            height: 160px;  
             background-color: white;
-            border: 12px solid var(--theme-color, #00e5ff); /* 邊框微調配合圓圈 */
+            border: 12px solid var(--theme-color, #00e5ff); 
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 8px 16px rgba(0,0,0,0.6);
@@ -51,7 +51,7 @@
             justify-content: center;
             align-items: center;
             color: #333333;
-            font-size: 100px; /* 🌟 裡面的數字稍微放大到 100px */
+            font-size: 100px; 
             font-weight: 900;
             text-decoration: none;
             transition: transform 0.2s ease;
@@ -88,14 +88,14 @@
         .hotspot::before {
             content: attr(data-name);
             position: absolute;
-            bottom: 180px; /* 🌟 配合變大的圓圈與字體，將字卡往上推 */
+            bottom: 180px; 
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(40, 40, 40, 0.95);
             color: #ffffff;
-            padding: 25px 50px; /* 🌟 加大內距，讓變大的字體不會貼住邊緣 */
-            border-radius: 30px; /* 字卡邊角更圓潤 */
-            font-size: 90px; /* 🌟 字卡文字從 60px 大幅放大到 90px */
+            padding: 25px 50px; 
+            border-radius: 30px; 
+            font-size: 90px; 
             font-weight: bold;
             white-space: nowrap;
             opacity: 0;
@@ -108,8 +108,9 @@
             opacity: 1;
         }
 
-        /* 座標面板與圖例面板保持不變 */
+        /* 座標面板 (已隱藏) 與圖例面板 */
         #coord-panel {
+            display: none; /* 🌟 加上這行，完美隱藏座標面板！ */
             position: fixed;
             bottom: 20px;
             left: 20px;
@@ -195,7 +196,7 @@
 </head>
 <body>
 
-    <div id="coord-panel">📍 點擊地圖獲取座標<br>X: -- %<br>Y: -- %</div>
+    <div id="coord-panel">📍 點擊地圖獲取座標<br>X: -- %<br>Y: -- %</div> 
 
     <div id="legend-panel">
         <h3>📍 校園圖例</h3>
@@ -215,7 +216,7 @@
             { num: "3", id: 103, name: "學員餐廳", x: 36.4, y: 57.4, color: "#00e5ff", link: "./A+B/index.html#8-b-3" },
             { num: "4", id: 104, name: "管理學院B棟", x: 32.7, y: 54.1, color: "#00e5ff", link: "./A+B/index.html#9-b-4" },
             { num: "5", id: 105, name: "明德樓", x: 47.9, y: 28.4, color: "#00e5ff", link: "./A+B/index.html#26-b-25" },
-            { num: "6", id: 106, name: "獸醫館", x: 47.9, y: 28.4, color: "#00e5ff", link: "./C、D、E路/index.html#4-c-5" },
+            { num: "6", id: 106, name: "獸醫館", x: 87.2, y: 60.0, color: "#00e5ff", link: "./C、D、E路/index.html#4-c-5" },
             { num: "7", id: 107, name: "游泳池", x: 81.2, y: 42.2, color: "#00e5ff", link: "./C、D、E路/index.html#12-e-4" },
         ];
 
