@@ -993,7 +993,8 @@ var APP_DATA = {
           "yaw": -1.4601665157897035,
           "pitch": 0.15316448297780383,
           "rotation": 0,
-          "target": "25-b-21"
+          "target": "23-d-7b-21",
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/C、D、E路/index.html#23-d-7b-21", 
         },
         {
           "yaw": 1.5945701412497684,
