@@ -1118,7 +1118,7 @@ var APP_DATA = {
         {
           "yaw": 1.45678391, 
           "pitch": 0.09925366293106208,
-          "title": "<a href=\"../A+B/index.html#25-b-21\" style=\"text-decoration: underline; font-size: 24px;\">前往B-21</a>",
+          "title": "<a href=\"../A+B/index.html#20-b-16\" style=\"text-decoration: underline; font-size: 24px;\">前往B-16</a>",
           "text": ""
         }
       ]
