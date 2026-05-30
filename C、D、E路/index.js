@@ -263,20 +263,29 @@
       icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
     }
 
-    // Add click event handler.
-    wrapper.addEventListener('click', function() {
-      switchScene(findSceneById(hotspot.target));
+    wrapper.addEventListener('click', function(event) {
+      event.stopPropagation();
+      if (hotspot.urlTarget) {
+        window.location.href = hotspot.urlTarget;
+        return;
+      }
+      var targetScene = findSceneById(hotspot.target);
+      if (targetScene) {
+        switchScene(targetScene);
+      }
     });
 
-    // Prevent touch and scroll events from reaching the parent element.
-    // This prevents the view control logic from interfering with the hotspot.
     stopTouchAndScrollEventPropagation(wrapper);
 
-    // Create tooltip element.
     var tooltip = document.createElement('div');
     tooltip.classList.add('hotspot-tooltip');
     tooltip.classList.add('link-hotspot-tooltip');
-    tooltip.innerHTML = findSceneDataById(hotspot.target).name;
+    var targetData = findSceneDataById(hotspot.target);
+    if (hotspot.urlTarget) {
+      tooltip.innerHTML = hotspot.title || "前往連結";
+    } else {
+      tooltip.innerHTML = (targetData && targetData.name) ? targetData.name : "前往下一個區域";
+    }
 
     wrapper.appendChild(icon);
     wrapper.appendChild(tooltip);
