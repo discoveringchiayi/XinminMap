@@ -34,15 +34,17 @@ var APP_DATA = {
  "pitch": 0.1516632353078453,
  "rotation": 0,
  "target": "1-c-2"
- }
- ],
- "infoHotspots": [
+ },
  {
  "yaw": 3.27005896, 
  "pitch": 0.1516632353078453,
  "title": " 前往A-1 ",
- "text": ""
+ "target": "to-a-1",
+ "urlTarget": "https://discoveringchiayi.github.io/XinminMap/A+B/index.html#0-1", 
  }
+ ],
+ "infoHotspots": [
+ 
  ]
  },
  {
