@@ -828,15 +828,16 @@ var APP_DATA = {
  "pitch": 0.1518974465018239,
  "rotation": 0,
  "target": "29-d-12"
- }
- ],
- "infoHotspots": [
- {
+ },
+  {
  "yaw": 6.03069914, 
  "pitch": 0.03,
  "title": " 前往B-25 ",
- "text": ""
+ "target": "to-d-1",
+ "urlTarget": "https://discoveringchiayi.github.io/XinminMap/A+B/index.html#26-b-25",
  }
+ ],
+ "infoHotspots": [
  ]
  },
  {
