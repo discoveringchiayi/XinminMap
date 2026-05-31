@@ -47,7 +47,14 @@ var APP_DATA = {
           "rotation": 0,
           "target": "5-b-1"
         },
-        
+        {
+          "yaw": 1.5222467546063836,
+          "pitch": 0.062100216522692264,
+          "rotation": 0,
+          "target": "to-c-1",
+          "urlTarget": "https://discoveringchiayi.github.io/XinminMap/C、D、E路/index.html#0-c-1a-1", 
+          "title": "前往 C-1"
+        }
       ],
       "infoHotspots": []
     },
