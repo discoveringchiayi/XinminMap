@@ -285,8 +285,8 @@ var APP_DATA = {
           "title": "前往 B-11"
         },
         {
-          "yaw": 3.141592653589793,
-          "pitch": 0.21075634771974805,
+          "yaw": -0.12284132200589326,
+          "pitch": 0.07387083777775771,
           "rotation": 0,
           "target": "14-b-9",
           "urlTarget": "https://discoveringchiayi.github.io/XinminMap/A+B/index.html#14-b-9",
@@ -369,8 +369,8 @@ var APP_DATA = {
           "target": "8-"
         },
         {
-          "yaw": 0.5191961213921914,
-          "pitch": 0.10640611721168014,
+          "yaw": 1.3804334645643905,
+          "pitch": 0.07011296914764209,
           "rotation": 0,
           "target": "22-b-18",
           "urlTarget": "https://discoveringchiayi.github.io/XinminMap/A+B/index.html#22-b-18",
