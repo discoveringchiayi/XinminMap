@@ -108,25 +108,9 @@
             opacity: 1;
         }
 
-        /* 座標面板 (已隱藏) 與圖例面板 */
-        #coord-panel {
-            display: none; /* 🌟 加上這行，完美隱藏座標面板！ */
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background-color: rgba(20, 20, 20, 0.9);
-            color: #00e5ff;
-            padding: 15px 25px;
-            border-radius: 10px;
-            font-family: monospace;
-            font-size: 20px;
-            font-weight: bold;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.6);
-            z-index: 200;
-            border: 2px solid #00e5ff;
-            pointer-events: none;
-        }
-
+        /* ==========================================
+           🌟 圖例面板的專屬設計
+           ========================================== */
         #legend-panel {
             position: fixed;
             top: 20px;
@@ -196,8 +180,6 @@
 </head>
 <body>
 
-    <div id="coord-panel">📍 點擊地圖獲取座標<br>X: -- %<br>Y: -- %</div> 
-
     <div id="legend-panel">
         <h3>📍 校園圖例</h3>
         <ul id="legend-list"></ul>
@@ -224,7 +206,6 @@
         const mapImage = document.getElementById('map-image');
         const viewport = document.getElementById('viewport');
         const legendList = document.getElementById('legend-list');
-        const coordPanel = document.getElementById('coord-panel');
 
         locations.forEach(loc => {
             if (loc.num) {
@@ -326,22 +307,7 @@
             updateTransform();
         });
 
-        window.addEventListener('mouseup', (e) => {
-            if (isDragging && !hasMoved) {
-                const rect = mapImage.getBoundingClientRect();
-                const clickX = e.clientX - rect.left;
-                const clickY = e.clientY - rect.top;
-
-                const pctX = ((clickX / rect.width) * 100).toFixed(1);
-                const pctY = ((clickY / rect.height) * 100).toFixed(1);
-
-                if (pctX >= 0 && pctX <= 100 && pctY >= 0 && pctY <= 100) {
-                    coordPanel.innerHTML = `🎯 當前觀測座標：<br>X: ${pctX}<br>Y: ${pctY}`;
-                }
-            }
-            isDragging = false;
-        });
-
+        window.addEventListener('mouseup', () => { isDragging = false; });
         window.addEventListener('mouseleave', () => { isDragging = false; });
 
     </script>
